@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css" />
-    <link href="css/github.css" rel="stylesheet" type="text/css" />
 
-    <title></title>
-  </head>
-  <body>
-    <h2>Weekly-nerd #1</h2>
-    <h1>How to create a CSS Print Stylesheet for a magazine.</h1>
-    <p>No matter the medium - Ben Marshall
-    </p>
+<head>
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css" />
+  <link href="css/github.css" rel="stylesheet" type="text/css" />
 
-    <!-- <h2>Table of Contents</h2>
+  <title></title>
+</head>
+
+<body>
+  <h2>Weekly-nerd #1</h2>
+  <h1>How to create a CSS Print Stylesheet for a magazine.</h1>
+  <p>No matter the medium - Ben Marshall
+  </p>
+
+  <!-- <h2>Table of Contents</h2>
     <ul class="tableOfContent">
       <li><a href="#htmlcss">HTML, CSS & JS</a></li>
       <li><a href="#scope">Scope & Closure</a></li>
@@ -24,90 +26,121 @@
       <li><a href="#sources">Sources</a></li>
     </ul> -->
 
-    <!-- <h2>Content</h2> -->
-    <section>
-      <p>
-        Now (almost) every website is responsive, we almost forgotten printed styled sheets. But think about recipes, directions and blog posts. Not everyone has a tablet or an internet connection everywhere. 
-        Creating a print style sheet is actually quite easy. Here is how you can create a print (css) stylesheet.
-      </p>
+  <!-- <h2>Content</h2> -->
+  <section>
+    <p>
+      Now (almost) every website is responsive, we almost forgotten printed styled sheets. But think about recipes,
+      directions and blog posts. Not everyone has a tablet or an internet connection everywhere.
+      Creating a print style sheet is actually quite easy. Here is how you can create a print (css) stylesheet.
+    </p>
 
-      <h4>How to start?</h4>
-      <p>
-        To make sure your webpage will look nice when a user hits <code>cmd/ctrl + p</code> you have to specify some styles with css. You can use the media query print:
-      </p>
-      <pre><code data-language="css">@media print {
+    <h4>How to start?</h4>
+    <p>
+      To make sure your webpage will look nice when a user hits <code>cmd/ctrl + p</code> you have to specify some
+      styles with css. You can use the media query print:
+    </p>
+    <pre><code data-language="css">@media print {
   …
 }
     </code></pre>
 
-      <p>All declarations within this query will be applied to the printed version of the page. Probably a lot of elements need to be reset or styled differently so that they look normal on a sheet of paper. Even tough you want to make the printed version similar to the web version, it's easier to use this media query.</p>
-     
-      <p>If you have a large CSS file for print you'd better create a whole new file for the print styles and define the file in the HTML like this:</p>
+    <p>All declarations within this query will be applied to the printed version of the page. Probably a lot of elements
+      need to be reset or styled differently so that they look normal on a sheet of paper. Even tough you want to make
+      the printed version similar to the web version, it's easier to use this media query.</p>
 
-      <pre><code data-language="html">
+    <p>If you have a large CSS file for print you'd better create a whole new file for the print styles and define the
+      file in the HTML like this:</p>
+
+    <pre><code data-language="html">
 <link rel="stylesheet" href="print-style.css" 
 media="print" />
         </code></pre>
-      <p>Browsers will only download this file when the user starts printing.</p>
+    <p>Browsers will only download this file when the user starts printing.</p>
 
-      <h5>Preview</h5>
-      <p>With Chrome DevTools you can preview what the printed version will look like. When in the inspector window: choose more <b>tools > rendering</b>. There will appear a panel where you can change the CSS media rendering emulation to print.</p>
-      <img src="img/af1.png" alt="">
-      <p>Chrome shows a preview as well when you hit <code> cmd/ctrl + p</code></p>
-      <img src="img/af2.png" alt="">
-      <h5>Page styling</h5>
-      
-      <p>When you open the preview for the first time (before adding any print styles) you probably will notice that some elements will be cut in the middle, and continue on the next page. Use:</p>
+    <h5>Preview</h5>
+    <p>With Chrome DevTools you can preview what the printed version will look like. When in the inspector window:
+      choose more <b>tools > rendering</b>. There will appear a panel where you can change the CSS media rendering
+      emulation to print.</p>
+    <img src="img/af1.png" alt="">
+    <p>Chrome shows a preview as well when you hit <code> cmd/ctrl + p</code></p>
+    <img src="img/af2.png" alt="">
+    <h5>Page styling</h5>
 
-      <pre>
+    <p>When you open the preview for the first time (before adding any print styles) you probably will notice that some
+      elements will be cut in the middle, and continue on the next page. Use:</p>
+
+    <pre>
         <code data-language="css">p {
   page-break-inside: avoid;
 }</code></pre>
 
-      <p>when you want to avoid the breaking of elements. Maybe you want to start some specific elements always on a new page. Then use:</p>
+    <p>when you want to avoid the breaking of elements. Maybe you want to start some specific elements always on a new
+      page. Then use:</p>
 
-      <pre>
+    <pre>
           <code data-language="css">section {
   page-break-after: always;
 }
 </code></pre>
 
-        <p>With the <code>@page</code> rule you can specify dimensions and margins of a page.
-          </p>
+    <p>With the <code>@page</code> rule you can specify dimensions and margins of a page.
+    </p>
 
-          <pre>
+    <pre>
 <code data-language="css">@page {
   size: A5; /* 148 × 210 mm */
   margin: 4cm; /* use cm or in */
 }</code></pre>
-<h5>Change the appearance of elements</h5>
-<p>Some interactive elements will become useless once you print them on paper. You can make the content within these elements useful again. Think about links to other pages. When printing an <code>a</code> element you probably lose a lot of information. With CSS you can append a link after after the <code>a</code> tag using:</p>
+    <h5>Change the appearance of elements</h5>
+    <p>Some interactive elements will become useless once you print them on paper. You can make the content within these
+      elements useful again. Think about links to other pages. When printing an <code>a</code> element you probably lose
+      a lot of information. With CSS you can append a link after after the <code>a</code> tag using:</p>
 
-<pre>
+    <pre>
     <code data-language="css">a[href^="http"]::after {
   content: " (" attr(href) ")";
 }</code></pre>
 
-  <p>You can do the same for video or audio elements. Of course you can't play a video, but you can show the user the link to the webpage where they can find the video or audio. </p>
+    <p>You can do the same for video or audio elements. Of course you can't play a video, but you can show the user the
+      link to the webpage where they can find the video or audio. </p>
 
-  <h5>Hide elements</h5>
-  <p>Depending on the type of website, you could consider to hide some elements. The navigation on your webpage probably won't have any value when printing an article. </p>
+    <h5>Hide elements</h5>
+    <p>Depending on the type of website, you could consider to hide some elements. The navigation on your webpage
+      probably won't have any value when printing an article. </p>
 
-  <pre>
+    <pre>
       <code data-language="css">nav {
   display: none;
 }</code></pre>
 
     <h5>Keep this in mind</h5>
-    <p>Some properties like <code>display: flex;</code>  or <code>display: grid</code> for your print stylesheets are not very well supported. Even Chrome has some bugs. If you wan't to position your elements in a very specific way, you'd better use 
-    <code>postion: absolute</code> and/or <code>postion: relative</code></p>
+    <p>Some properties like <code>display: flex;</code> or <code>display: grid</code> for your print stylesheets are not
+      very well supported. Even Chrome has some bugs. If you wan't to position your elements in a very specific way,
+      you'd better use
+      <code>postion: absolute</code> and/or <code>postion: relative</code></p>
 
     <h5>Conclusion</h5>
 
-    <p>With creating a print stylesheet you can maybe fulfill the needs of more of your website users. When making your print stylesheet, you can test what the printed version will look like. Keep in mind that not everything is supported for print. </p>
+    <p>With creating a print stylesheet you can maybe fulfill the needs of more of your website users. When making your
+      print stylesheet, you can test what the printed version will look like. Keep in mind that not everything is
+      supported for print. </p>
 
-     </section>
-    <script src="js/index.js"></script>
-    <script src="rainbow-custom.min.js"></script>
-  </body>
+    <h5>References</h5>
+    <ul>
+      <li>
+        <a href="https://www.smashingmagazine.com/2018/05/print-stylesheets-in-2018/">A Guide To The State Of Print
+          Stylesheets In 2018 - Smashing Magazine</a>
+      </li>
+      <li>
+        <a href="https://www.smashingmagazine.com/2011/11/how-to-set-up-a-print-style-sheet/">How To Set Up A Print
+          Style Sheet - Smashing Magazine</a></li>
+      <li>
+        <a href="https://flaviocopes.com/css-printing/">How to print your HTML with style - Flavio's Club</a>
+      </li>
+    </ul>
+  </section>
+  <script src="js/index.js"></script>
+  <script src="rainbow-custom.min.js"></script>
+</body>
+
 </html>
